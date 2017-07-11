@@ -126,7 +126,7 @@ class Gmina_wiejska(Obszar_administracyjny):
         """
         Adds Gmina_wejska to gminy wiejskie list.
         """
-        self.gminy_wejskie_list.append(self)
+        self.gminy_wiejskie_list.append(self)
 
     @classmethod
     def get_gminy_wiejskie(cls):

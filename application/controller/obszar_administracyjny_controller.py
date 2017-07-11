@@ -10,4 +10,6 @@ class Obszar_administracyjnyController:
         view: object of view class
         input: object of input class
     """
-    pass
+    def __init__(self, user_input, view):
+        self.user_input = user_input
+        self.view = view
