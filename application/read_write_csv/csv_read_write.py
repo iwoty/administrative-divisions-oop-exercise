@@ -45,18 +45,29 @@ class Program:
                             new_obszar.add_to_powiaty()
                         elif type(new_obszar) is Gmina_miejska:
                             new_obszar.add_to_gminy_miejskie()
+
+                            # obszar[key].split('\t')[3].strip()
+
+                            # Powiat.add_to_communities_list(powiat_name, community)
+
                         elif type(new_obszar) is Gmina_wiejska:
                             new_obszar.add_to_gminy_wiejskie()
+
                         elif type(new_obszar) is Gmina_miejsko_wiejska:
                             new_obszar.add_to_gminy_miejsko_wiejskie()
+
                         elif type(new_obszar) is Obszar_wiejski:
                             new_obszar.add_to_obszary_wiejskie()
+
                         elif type(new_obszar) is Miasto:
                             new_obszar.add_to_miasta()
+
                         elif type(new_obszar) is Miasto_na_prawach_powiatu:
                             new_obszar.add_to_miasta_na_prawach_powiatu()
                         elif type(new_obszar) is Delegatura:
                             new_obszar.add_to_delegatury()
+            #
+            # print(POWIAT.get_communities_list())
 
         except FileNotFoundError:
             raise FileNotFoundError('File ' + file_name + ' doesn\'t exist')

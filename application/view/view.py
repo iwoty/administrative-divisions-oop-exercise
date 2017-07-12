@@ -7,7 +7,6 @@ class View:
     """
     Creates View obj.
     """
-
     def show_menu_option(self, options):
         """
         Prints menu options.
@@ -23,15 +22,25 @@ class View:
         """
         Prints main statistics about administration zones.
         """
-        statistics = [[str(len(Wojewodztwo.get_wojewodztwa())), 'województw'],
-                      [str(len(Powiat.get_powiaty())+len(Miasto_na_prawach_powiatu.get_miasta_na_prawach_powiatu())), 'powiatów'],
-                      [str(len(Gmina_miejska.get_gminy_miejskie())), 'gmin miejskich'],
-                      [str(len(Gmina_wiejska.get_gminy_wiejskie())), 'gmin wiejskich'],
-                      [str(len(Gmina_miejsko_wiejska.get_gminy_miejsko_wiejskie())), 'gmin miejsko-wiejskich'],
-                      [str(len(Obszar_wiejski.get_obszary_wiejskie())), 'obszarów wiejskich'],
-                      [str(len(Miasto.get_miasta())), 'miast'],
-                      [str(len(Miasto_na_prawach_powiatu.get_miasta_na_prawach_powiatu())), 'miast na prawach powiatu'],
-                      [str(len(Delegatura.get_delegatury())), 'delegatur']]
+        number_of_wojewodztwa = len(Wojewodztwo.get_wojewodztwa())
+        number_of_miasto_na_prawach_powiatu = len(Miasto_na_prawach_powiatu.get_miasta_na_prawach_powiatu())
+        number_of_powiaty = len(Powiat.get_powiaty()) + number_of_miasto_na_prawach_powiatu
+        number_of_gmina_miejska = len(Gmina_miejska.get_gminy_miejskie())
+        number_of_gmina_wiejska = len(Gmina_wiejska.get_gminy_wiejskie())
+        number_of_gmina_miejsko_wiejska = len(Gmina_miejsko_wiejska.get_gminy_miejsko_wiejskie())
+        number_of_obszar_wiejski = len(Obszar_wiejski.get_obszary_wiejskie())
+        number_of_miasto = len(Miasto.get_miasta())
+        number_of_delegatura = len(Delegatura.get_delegatury())
+
+        statistics = [[str(number_of_wojewodztwa), 'województw'],
+                      [str(number_of_powiaty), 'powiatów'],
+                      [str(number_of_gmina_miejska), 'gmin miejskich'],
+                      [str(number_of_gmina_wiejska), 'gmin wiejskich'],
+                      [str(number_of_gmina_miejsko_wiejska), 'gmin miejsko-wiejskich'],
+                      [str(number_of_obszar_wiejski), 'obszarów wiejskich'],
+                      [str(number_of_miasto), 'miast'],
+                      [str(number_of_miasto_na_prawach_powiatu), 'miast na prawach powiatu'],
+                      [str(number_of_delegatura), 'delegatur']]
 
         COLUMN1_WIDTH = 5
         COLUMN2_WIDTH = 26
@@ -46,8 +55,6 @@ class View:
             print('|' + '{}'.format(stat[0]).center(COLUMN1_WIDTH) + '|' + '{}'.format(stat[1]).center(COLUMN2_WIDTH) + '|')
             print(LINE)
 
-        input('Enter anykey ')
-
     def cities_longest_names(self):
         cities_names = []
         for miasto in Miasto.get_miasta():
@@ -55,4 +62,3 @@ class View:
         cities_names.sort(key=len, reverse=True)
         for i in range(0, 3):
             print(cities_names[i])
-        input('Enter anykey ')

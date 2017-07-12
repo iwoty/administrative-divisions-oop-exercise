@@ -35,7 +35,7 @@ class Application:
         self.user_input = UserInput()
         self.view = View()
         self.malopolska_data_file_path = "application/data/malopolska.csv"
-        self.obszar_controller = Obszar_administracyjnyController(UserInput(), View())
+        self.obszar_controller = Obszar_administracyjnyController(self.user_input, self.view)
 
     def handle_menu(self):
         """
@@ -45,8 +45,10 @@ class Application:
         user_option = self.user_input.get_option(self.options)
         if user_option == 'List statistics':
             self.view.list_statistics()
+            self.user_input.get_anykey()
         elif user_option == 'Display 3 cities with the longest names':
             self.view.cities_longest_names()
+            self.user_input.get_anykey()
         elif user_option == 'Display county\'s name with the largest number of communities':
             pass
         elif user_option == 'Display locations, that belong to more than one category':

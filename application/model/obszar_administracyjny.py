@@ -67,14 +67,43 @@ class Powiat(Obszar_administracyjny):
 
     Class attributes:
         powiaty_list (list of :obj: 'Powiat'): list of Powiat objects
+        communities_list (dict of :obj: 'Gmina_miejska' or 'Gmina_wiejska' or 'Gmina_miejsko_wiejska' or 'Miasto')
     """
     powiaty_list = []
+    communities_dict = {}
+
+    def __init__(self, name):
+        """
+        Creates Powiat objecs.
+        """
+        super().__init__(name)
+        self.communities_list = []
 
     def add_to_powiaty(self):
         """
         Adds Powiat to powiaty list.
         """
         self.powiaty_list.append(self)
+
+    @classmethod
+    def add_to_communities_list(cls, powiat_name, community):
+        """
+        Adds community ('Gmina_miejska' or 'Gmina_wiejska' or 'Gmina_miejsko_wiejska'
+                         or 'Miasto') object to communities_list
+
+        Parameters:
+        community: :obj:
+        """
+        self.communities_dict[powiat_name] = community
+
+    def get_communities_list(self):
+        """
+        Returns communities list (instance attribute).
+
+        Returns:
+        powiaty_list: list
+        """
+        return self.powiaty_list
 
     @classmethod
     def get_powiaty(cls):
