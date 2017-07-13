@@ -77,9 +77,11 @@ class View:
 
         all_locations_names = [location.name for location in all_locations]
 
-        for location in all_locations_names:
-            if set(location).issubset(all_locations_names):
-                print(location)
+        unique_locations = list(set(all_locations_names))
+
+        for location in unique_locations:
+            all_locations_names.remove(location)
+        print(all_locations_names)
 
     def special_message(self):
         print('There will be something.. someday..')
