@@ -1,5 +1,5 @@
 
-from application.read_write_csv.csv_read_write import *
+from application.read_csv.csv_read import *
 from application.user_input.user_input import UserInput
 from application.view.view import View
 from application.controller.obszar_administracyjny_controller import Obszar_administracyjnyController
@@ -50,11 +50,14 @@ class Application:
             self.view.cities_longest_names()
             self.user_input.get_anykey()
         elif user_option == 'Display county\'s name with the largest number of communities':
-            pass
+            self.view.special_message()
+            self.user_input.get_anykey()
         elif user_option == 'Display locations, that belong to more than one category':
-            pass
+            self.view.locations_repeated()
+            self.user_input.get_anykey()
         elif user_option == 'Advanced search':
-            pass
+            self.view.special_message()
+            self.user_input.get_anykey()
         elif user_option == 'Exit program':
             self.is_running = False
             return

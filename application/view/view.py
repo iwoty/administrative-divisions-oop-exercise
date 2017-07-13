@@ -62,3 +62,24 @@ class View:
         cities_names.sort(key=len, reverse=True)
         for i in range(0, 3):
             print(cities_names[i])
+
+    def locations_repeated(self):
+
+        all_locations = (Wojewodztwo.get_wojewodztwa() +
+                         Miasto_na_prawach_powiatu.get_miasta_na_prawach_powiatu() +
+                         Powiat.get_powiaty() +
+                         Gmina_miejska.get_gminy_miejskie() +
+                         Gmina_wiejska.get_gminy_wiejskie() +
+                         Gmina_miejsko_wiejska.get_gminy_miejsko_wiejskie() +
+                         Obszar_wiejski.get_obszary_wiejskie() +
+                         Miasto.get_miasta() +
+                         Delegatura.get_delegatury())
+
+        all_locations_names = [location.name for location in all_locations]
+
+        for location in all_locations_names:
+            if set(location).issubset(all_locations_names):
+                print(location)
+
+    def special_message(self):
+        print('There will be something.. someday..')
